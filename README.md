@@ -1,2 +1,1 @@
-# script-
-First project 
+print("hello world")
