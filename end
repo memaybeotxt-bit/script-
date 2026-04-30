@@ -1,4 +1,4 @@
-local HI = 'print("hello world!")')
+local HI = 'print("hello world!")'
 local hi = print
 hi(HI) hi(HI) hi(HI) hi(HI)
 hi(HI) hi(HI) hi(HI) hi(HI) 
