@@ -1,0 +1,18 @@
+local player = game:GetService("Players").LocalPlayer
+local toolName = "Building Tools"
+local tool = player.Backpack:FindFirstChild(toolName) or player.Character:FindFirstChild(toolName)
+local Event = tool.SyncAPI.ServerEndpoint
+local function _(args)
+    Event:InvokeServer(table.unpack(args))
+end
+
+local function spawnWithImage()
+    local p = player.Character.HumanoidRootPart.Position + Vector3.new(0, -2.5, 0)
+    local pt = Event:InvokeServer("CreatePart", "Spawn", CFrame.new(p.X, p.Y, p.Z), workspace)
+    _({"SyncResize",{{["Part"] = pt,["CFrame"] = pt.CFrame,["Size"] = Vector3.new(12, 1, 12)}}})
+    _({"SetLocked",{pt},true})
+    _({"CreateTextures",{{["Part"] = pt,["Face"] = Enum.NormalId.Top,["TextureType"] = "Decal"}}})
+    _({"SyncTexture",{{["Part"] = pt,["Face"] = Enum.NormalId.Top,["TextureType"] = "Decal",["Texture"] = "rbxasset://textures/SpawnLocation.png"}}})
+    _({"SetName",{pt},player.Name .." SpawnLocation"})
+end
+spawnWithImage()
