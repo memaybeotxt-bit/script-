@@ -1,1 +1,5 @@
-print(C_c)
+local F3X = {}
+function F3X:Script(o)
+    print(o)
+end
+return F3X
